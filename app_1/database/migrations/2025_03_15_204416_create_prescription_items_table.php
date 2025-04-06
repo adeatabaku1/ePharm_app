@@ -9,8 +9,12 @@ return new class extends Migration {
         Schema::create('prescription_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('prescription_id')->constrained()->onDelete('cascade');
-            $table->foreignId('medication_id')->constrained()->onDelete('cascade');
-            $table->string('dosage'); // Example: "1 pill twice a day"
+            $table->string('medication_name');
+            $table->string('dosage');
+            $table->integer('capsule_count');
+            $table->integer('frequency_per_day');
+            $table->json('intake_times')->nullable();
+            $table->integer('duration_days');
             $table->timestamps();
         });
     }

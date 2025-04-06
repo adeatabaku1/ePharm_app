@@ -1,9 +1,6 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -14,8 +11,13 @@ class User extends Authenticatable
         return $this->belongsTo(Tenant::class);
     }
 
-    public function roles(): BelongsToMany
+    public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_roles');
+    }
+
+    public function pharmacist()
+    {
+        return $this->hasOne(Pharmacist::class);
     }
 }

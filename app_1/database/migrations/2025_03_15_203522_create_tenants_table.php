@@ -12,10 +12,9 @@ return new class extends Migration {
     {
         Schema::create('tenants', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Pharmacy name
-            $table->string('email')->unique(); // Unique contact email
-            $table->string('phone')->nullable();
-            $table->string('address')->nullable();
+            $table->string('name');
+            $table->enum('type', ['clinic', 'pharmacy']);
+            $table->boolean('is_verified')->default(false);
             $table->timestamps();
         });
     }

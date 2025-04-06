@@ -7,10 +7,13 @@ return new class extends Migration {
     public function up() {
         Schema::create('prescriptions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tenant_id')->constrained()->onDelete('cascade'); // Pharmacy
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Patient
-            $table->foreignId('doctor_id')->nullable()->constrained('users')->onDelete('set null'); // Doctor who approves it
-            $table->string('status')->default('pending'); // pending, approved, rejected
+            $table->foreignId('tenant_id')->constrained()->onDelete('cascade');
+            $table->foreignId('doctor_id')->constrained()->onDelete('cascade');
+            $table->foreignId('patient_id')->constrained()->onDelete('cascade');
+            $table->text('diagnosis');
+            $table->text('notes')->nullable();
+            $table->boolean('is_sent_to_patient')->default(false);
+            $table->foreignId('discount_code_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }

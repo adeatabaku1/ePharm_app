@@ -7,11 +7,13 @@ return new class extends Migration {
     public function up() {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tenant_id')->constrained()->onDelete('cascade'); // Pharmacy
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('username')->unique();
             $table->string('password');
-            $table->enum('role', ['patient', 'pharmacist', 'doctor', 'admin']); // Role-based access
+            $table->foreignId('tenant_id')->constrained()->onDelete('cascade');
+            $table->string('phone')->nullable();
+            $table->enum('user_type', ['admin', 'doctor', 'patient', 'pharmacist']);
             $table->timestamps();
         });
     }
