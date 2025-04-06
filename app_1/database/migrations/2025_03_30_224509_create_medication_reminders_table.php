@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('medication_reminders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('patient_id')->constrained()->onDelete('cascade');
+            $table->foreignId('prescription_item_id')->constrained()->onDelete('cascade');
+            $table->date('reminder_date');
+            $table->boolean('sent')->default(false);
             $table->timestamps();
         });
+
     }
 
     /**
