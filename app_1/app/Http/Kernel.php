@@ -50,7 +50,7 @@ class Kernel extends HttpKernel
 
         'api' => [
             // Sanctum’s SPA/auth middleware (optional, but safe)
-            EnsureFrontendRequestsAreStateful::class,
+           // EnsureFrontendRequestsAreStateful::class,
 
             // Rate limiting
             'throttle:api',

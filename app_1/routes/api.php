@@ -1,22 +1,39 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PrescriptionController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\PharmacyRegistrationController;
+use App\Http\Controllers\AuthController;
 
-// Public routes
-Route::post('register',   [AuthController::class, 'register']);
-Route::post('verify-2fa', [AuthController::class, 'verify2FA']);
-Route::post('login',      [AuthController::class, 'login']);
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| These routes are loaded by the RouteServiceProvider within the "api"
+| middleware group.
+|
+*/
 
-// Protected doctor routes
-Route::middleware(['auth:sanctum', 'role:doctor'])->group(function () {
-    Route::post('prescriptions', [PrescriptionController::class, 'store']);
-});
+Route::get('ping', fn() => response()->json(['pong']));
 
-// Test route
-Route::get('test', function () {
-    return response()->json([
-        'message' => 'Po funksionon React + Laravel API! 🎉'
-    ]);
-});
+// 1) ARBK-backed pharmacy signup
+Route::post('pharmacies/register', [PharmacyRegistrationController::class, 'register']);
+
+// 2) Authentication
+Route::post('login',  [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout'])
+    ->middleware('auth:sanctum');
+
+// 3) Email verification
+Route::get('email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return response()->json(['message' => 'Email verified']);
+})->middleware('auth:sanctum')->name('verification.verify');
+
+Route::post('email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return response()->json(['message' => 'Verification e-mail sent']);
+})->middleware('auth:sanctum')->name('verification.send');
