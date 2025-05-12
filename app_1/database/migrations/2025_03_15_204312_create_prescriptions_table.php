@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->foreignId('discount_code_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
+
     }
 
     public function down() {
