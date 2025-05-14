@@ -4,7 +4,7 @@ namespace App\Http\Requests\Doctor;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePrescriptionRequest extends FormRequest
+class UpdatePrescriptionRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,9 +14,7 @@ class StorePrescriptionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'doctor_id' => 'required|exists:doctors,id',
-            'patient_id' => 'required|exists:patients,id',
-            'diagnosis' => 'required|string|max:255',
+            'diagnosis' => 'sometimes|string|max:255',
             'notes' => 'nullable|string',
         ];
     }
