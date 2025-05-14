@@ -18,6 +18,10 @@ class Doctor extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'is_verified' => 'boolean',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -26,4 +30,9 @@ class Doctor extends Model
     {
         return $this->hasMany(Prescription::class);
     }
+    public function patients()
+    {
+        return $this->belongsToMany(Patient::class, 'doctor_patients');
+    }
+
 }

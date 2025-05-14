@@ -6,6 +6,10 @@ class PrescriptionDelivery extends Model
 {
     protected $fillable = ['prescription_id', 'pharmacy_id', 'delivery_type', 'status', 'discount_applied', 'delivered_at'];
 
+    protected $casts = [
+        'delivered_at'    => 'datetime',
+        'discount_applied'=> 'boolean',
+    ];
     public function prescription()
     {
         return $this->belongsTo(Prescription::class);

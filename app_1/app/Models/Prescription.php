@@ -6,6 +6,14 @@ class Prescription extends Model
 {
     protected $fillable = ['tenant_id', 'doctor_id', 'patient_id', 'diagnosis', 'notes', 'is_sent_to_patient', 'discount_code_id'];
 
+    protected $casts = [
+        'is_sent_to_patient' => 'boolean',
+    ];
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
