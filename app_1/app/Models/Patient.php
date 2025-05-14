@@ -17,10 +17,23 @@ class Patient extends Model
         'address',
     ];
 
+    protected $casts = [
+        'birthdate' => 'date',
+    ];
+
     public $timestamps = false; // if you only have created_at
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+    public function prescriptions()
+    {
+        return $this->hasMany(Prescription::class);
+    }
+    public function doctors()
+    {
+        return $this->belongsToMany(Doctor::class, 'doctor_patients');
+    }
+
 }

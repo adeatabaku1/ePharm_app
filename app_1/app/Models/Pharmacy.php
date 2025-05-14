@@ -28,4 +28,25 @@ class Pharmacy extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+
+    public function sales()
+    {
+        return $this->hasMany(PharmacySale::class);
+    }
+
+    public function credits()
+    {
+        return $this->hasMany(PharmacyCredit::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(PharmacyReview::class);
+    }
+
 }
