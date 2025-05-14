@@ -8,7 +8,7 @@ class StoreNotificationRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; 
+        return true; // Mund të shtosh logjikë për autorizim nëse nevojitet
     }
 
     public function rules(): array
