@@ -1,22 +1,21 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Doctor;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PharmacyResource extends JsonResource
+class UserResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'address' => $this->address,
+            'email' => $this->email,
             'phone' => $this->phone,
-            'rating' => $this->rating,
-            'is_open' => $this->is_open,
-            'created_at' => $this->created_at,
+            'user_type' => $this->user_type,
+            'address' => $this->address ?? null,
         ];
     }
 }
