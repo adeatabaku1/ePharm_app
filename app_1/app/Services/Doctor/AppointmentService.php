@@ -1,37 +1,50 @@
 <?php
 
-namespace App\Services\Doctor;
+namespace App\Http\Controllers\Doctor;
 
-use App\Models\Appointment;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Doctor\StoreAppointmentRequest;
+use App\Http\Resources\Doctor\AppointmentResource;
+use App\Services\Doctor\AppointmentService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
-class AppointmentService
+class AppointmentController extends Controller
 {
-    public function getAllByDoctor($doctorId)
+    protected AppointmentService $appointmentService;
+
+    public function __construct(AppointmentService $appointmentService)
     {
-        return Appointment::where('doctor_id', $doctorId)->latest()->get();
+        $this->appointmentService = $appointmentService;
     }
 
-    public function getById($id)
+    public function index(Request $request): JsonResponse
     {
-        return Appointment::findOrFail($id);
+        $appointments = $this->appointmentService->getAllByDoctor($request->user()->id);
+        return response()->json(AppointmentResource::collection($appointments));
     }
 
-    public function store($doctorId, array $data)
+    public function store(StoreAppointmentRequest $request): JsonResponse
     {
-        $data['doctor_id'] = $doctorId;
-        return Appointment::create($data);
+        $appointment = $this->appointmentService->store($request->user()->id, $request->validated());
+        return response()->json(new AppointmentResource($appointment), 201);
     }
 
-    public function update($id, array $data)
+    public function show($id): JsonResponse
     {
-        $appointment = Appointment::findOrFail($id);
-        $appointment->update($data);
-        return $appointment;
+        $appointment = $this->appointmentService->getById($id);
+        return response()->json(new AppointmentResource($appointment));
     }
 
-    public function delete($id)
+    public function update(StoreAppointmentRequest $request, $id): JsonResponse
     {
-        $appointment = Appointment::findOrFail($id);
-        $appointment->delete();
+        $appointment = $this->appointmentService->update($id, $request->validated());
+        return response()->json(new AppointmentResource($appointment));
+    }
+
+    public function destroy($id): JsonResponse
+    {
+        $this->appointmentService->delete($id);
+        return response()->json(['message' => 'Appointment deleted successfully']);
     }
 }

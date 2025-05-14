@@ -2,22 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'user_id',
         'type',
         'title',
         'message',
         'is_read',
+        'created_at',
     ];
-
-    public $timestamps = true; // uses created_at
 
     public function user()
     {
