@@ -7,9 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 class Pharmacy extends Model
 {
     protected $fillable = [
-        'name',
-        'email',
-        'phone',
+        'arbk_name',
+        'trade_name',
+        'business_type',
+        'registration_num',
+        'business_num',
+        'fiscal_num',
+        'employee_count',
+        'registration_date',
+        'municipality',
         'address',
+        'phone',
+        'email',
+        'capital',
+        'arbk_status',
+        'verified_at',
     ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

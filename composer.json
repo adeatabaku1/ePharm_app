@@ -1,5 +1,5 @@
 {
     "require": {
-        "darkaonline/l5-swagger": "*"
+        "laravel/sanctum": "^4.1"
     }
 }
