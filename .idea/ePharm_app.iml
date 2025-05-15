@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/app_1/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/app_1/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/app_1/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/app_1/storage/app" />
       <excludeFolder url="file://$MODULE_DIR$/app_1/storage/framework" />
       <excludeFolder url="file://$MODULE_DIR$/app_1/vendor" />
