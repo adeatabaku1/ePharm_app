@@ -165,6 +165,7 @@ return [
 
         // If you have a BroadcastServiceProvider:
         // App\Providers\BroadcastServiceProvider::class,
+        L5Swagger\L5SwaggerServiceProvider::class,
     ],
 
 ];

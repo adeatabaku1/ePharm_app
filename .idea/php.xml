@@ -175,6 +175,12 @@
       <path value="$PROJECT_DIR$/app_1/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/app_1/vendor/laravel/sanctum" />
       <path value="$PROJECT_DIR$/app_1/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/app_1/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/app_1/vendor/zircote/swagger-php" />
+      <path value="$PROJECT_DIR$/app_1/vendor/darkaonline/l5-swagger" />
+      <path value="$PROJECT_DIR$/app_1/vendor/swagger-api/swagger-ui" />
+      <path value="$PROJECT_DIR$/app_1/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/app_1/vendor/psr/cache" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
@@ -189,6 +195,7 @@
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/app_1/phpunit.xml" custom_loader_path="$PROJECT_DIR$/app_1/vendor/autoload.php" use_configuration_file="true" />
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" />
     </phpunit_settings>
   </component>
   <component name="Psalm">

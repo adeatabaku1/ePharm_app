@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
-
-use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @OA\Schema(
  *     schema="MedicineResource",
  *     type="object",
+ *     title="Medicine Resource",
+ *     required={"id", "tenant_id", "name", "price", "stock_quantity"},
  *     @OA\Property(property="id", type="integer", example=1),
  *     @OA\Property(property="tenant_id", type="integer", example=101),
  *     @OA\Property(property="name", type="string", example="Paracetamol"),
@@ -18,20 +16,3 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     @OA\Property(property="created_at", type="string", format="date-time", example="2024-01-01T12:00:00Z")
  * )
  */
-
-class MedicineResource extends JsonResource
-{
-    public function toArray(Request $request): array
-    {
-        return [
-            'id' => $this->id,
-            'tenant_id' => $this->tenant_id,
-            'name' => $this->name,
-            'description' => $this->description,
-            'price' => $this->price,
-            'stock_quantity' => $this->stock_quantity,
-            'expire_date' => $this->expire_date,
-            'created_at' => $this->created_at,
-        ];
-    }
-}
