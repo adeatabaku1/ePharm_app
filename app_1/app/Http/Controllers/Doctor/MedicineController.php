@@ -28,7 +28,17 @@ class MedicineController extends Controller
      *         description="List of medicines",
      *         @OA\JsonContent(
      *             type="array",
-     *             @OA\Items(ref="#/components/schemas/MedicineResource")
+     *             @OA\Items(
+     *                 type="object",
+     *                 @OA\Property(property="id", type="integer", example=1),
+     *                 @OA\Property(property="tenant_id", type="integer", example=101),
+     *                 @OA\Property(property="name", type="string", example="Paracetamol"),
+     *                 @OA\Property(property="description", type="string", example="Pain relief medicine"),
+     *                 @OA\Property(property="price", type="number", format="float", example=5.99),
+     *                 @OA\Property(property="stock_quantity", type="integer", example=120),
+     *                 @OA\Property(property="expire_date", type="string", format="date", example="2025-12-31"),
+     *                 @OA\Property(property="created_at", type="string", format="date-time", example="2024-01-01T12:00:00Z")
+     *             )
      *         )
      *     )
      * )
@@ -51,7 +61,17 @@ class MedicineController extends Controller
      *     @OA\Response(
      *         response=201,
      *         description="Medicine created",
-     *         @OA\JsonContent(ref="#/components/schemas/MedicineResource")
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="id", type="integer", example=1),
+     *             @OA\Property(property="tenant_id", type="integer", example=101),
+     *             @OA\Property(property="name", type="string", example="Paracetamol"),
+     *             @OA\Property(property="description", type="string", example="Pain relief medicine"),
+     *             @OA\Property(property="price", type="number", format="float", example=5.99),
+     *             @OA\Property(property="stock_quantity", type="integer", example=120),
+     *             @OA\Property(property="expire_date", type="string", format="date", example="2025-12-31"),
+     *             @OA\Property(property="created_at", type="string", format="date-time", example="2024-01-01T12:00:00Z")
+     *         )
      *     )
      * )
      */
@@ -76,7 +96,17 @@ class MedicineController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Medicine details",
-     *         @OA\JsonContent(ref="#/components/schemas/MedicineResource")
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="id", type="integer", example=1),
+     *             @OA\Property(property="tenant_id", type="integer", example=101),
+     *             @OA\Property(property="name", type="string", example="Paracetamol"),
+     *             @OA\Property(property="description", type="string", example="Pain relief medicine"),
+     *             @OA\Property(property="price", type="number", format="float", example=5.99),
+     *             @OA\Property(property="stock_quantity", type="integer", example=120),
+     *             @OA\Property(property="expire_date", type="string", format="date", example="2025-12-31"),
+     *             @OA\Property(property="created_at", type="string", format="date-time", example="2024-01-01T12:00:00Z")
+     *         )
      *     ),
      *     @OA\Response(response=404, description="Not found")
      * )
@@ -106,7 +136,17 @@ class MedicineController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Medicine updated",
-     *         @OA\JsonContent(ref="#/components/schemas/MedicineResource")
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="id", type="integer", example=1),
+     *             @OA\Property(property="tenant_id", type="integer", example=101),
+     *             @OA\Property(property="name", type="string", example="Paracetamol"),
+     *             @OA\Property(property="description", type="string", example="Pain relief medicine"),
+     *             @OA\Property(property="price", type="number", format="float", example=5.99),
+     *             @OA\Property(property="stock_quantity", type="integer", example=120),
+     *             @OA\Property(property="expire_date", type="string", format="date", example="2025-12-31"),
+     *             @OA\Property(property="created_at", type="string", format="date-time", example="2024-01-01T12:00:00Z")
+     *         )
      *     )
      * )
      */

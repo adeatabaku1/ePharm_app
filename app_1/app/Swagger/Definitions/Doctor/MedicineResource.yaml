@@ -1,4 +1,3 @@
-# app/Swagger/Definitions/MedicineResource.yaml
 
 MedicineResource:
   type: object
