@@ -10,11 +10,12 @@ class ChatService
 {
     public function getDoctorChatRooms($doctorId)
     {
-        return ChatRoom::with(['patient.user'])
+        return ChatRoom::with(['patient.user', 'messages'])
             ->where('doctor_id', $doctorId)
             ->orderByDesc('created_at')
             ->get();
     }
+
 
     public function getMessages($chatRoomId)
     {
@@ -33,3 +34,4 @@ class ChatService
         ]);
     }
 }
+

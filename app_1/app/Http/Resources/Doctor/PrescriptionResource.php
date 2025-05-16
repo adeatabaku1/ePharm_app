@@ -15,7 +15,17 @@ class PrescriptionResource extends JsonResource
             'patient' => $this->patient->user->name ?? null,
             'diagnosis' => $this->diagnosis,
             'notes' => $this->notes,
-            'created_at' => $this->created_at->toDateTimeString(),
+            'status' => $this->status ?? 'active', // default or db value
+            'date' => $this->created_at->toDateString(),
+            'medications' => $this->items->map(function ($item) {
+                return [
+                    'name' => $item->name,
+                    'dosage' => $item->dosage,
+                    'frequency' => $item->frequency,
+                    'duration' => $item->duration,
+                ];
+            }),
         ];
     }
+
 }
