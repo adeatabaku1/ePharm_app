@@ -31,8 +31,22 @@ class Medicine extends Model
         'updated_by'
     ];
 
+    protected $casts = [
+        'price'          => 'float',
+        'stock_quantity' => 'integer',
+        'expire_date'    => 'date',
+    ];
     public function tenant()
     {
         return $this->belongsTo(Tenant::class);
+    }
+    public function sales()
+    {
+        return $this->hasMany(PharmacySaleItem::class);
+    }
+
+    public function logs()
+    {
+        return $this->hasMany(MedicineLog::class);
     }
 }

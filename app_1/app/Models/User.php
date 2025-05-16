@@ -39,6 +39,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Pharmacy::class);
     }
 
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
     public function patient()   { return $this->hasOne(Patient::class); }
     public function doctor()    { return $this->hasOne(Doctor::class); }
     public function pharmacist(){ return $this->hasOne(Pharmacist::class); }
@@ -50,4 +54,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->role === $role;
     }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_roles');
+    }
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
 }

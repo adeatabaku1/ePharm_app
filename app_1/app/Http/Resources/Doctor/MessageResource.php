@@ -6,13 +6,13 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class MessageResource extends JsonResource
 {
-    public function toArray($request): array
+    public function toArray($request)
     {
         return [
             'id' => $this->id,
-            'sender_id' => $this->sender_id,
-            'message' => $this->message,
-            'sent_at' => $this->sent_at->toDateTimeString(),
+            'sender' => $this->sender_id === auth()->id() ? 'doctor' : 'patient',
+            'text' => $this->message,
+            'timestamp' => $this->sent_at->toISOString(),
         ];
     }
 }
